@@ -63,7 +63,7 @@ defmodule Exred.Node.GPIOOut do
     {nil, new_state}
   end
 
-  def handle_msg(msg, %{init: :starting}) do
+  def handle_msg(msg, %{init: :starting} = state) do
     Logger.warn "UNHANDLED MSG DURING INIT node: #{state.node_id} #{get_in(state.config, [:name, :value])} msg: #{inspect msg}"
     {nil, state}
   end
