@@ -6,16 +6,12 @@ defmodule Exred.Node.GPIOOut.Mixfile do
   def project do
     [
       app: :exred_node_gpio_out,
-      version: "0.1.2",
-      build_path: "../../_build",
-      config_path: "../../config/config.exs",
-      deps_path: "../../deps",
-      lockfile: "../../mix.lock",
+      version: "0.1.3",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps(),
       description: @description,
-      package: package()
+    sss  package: package()
     ]
   end
 
@@ -29,8 +25,9 @@ defmodule Exred.Node.GPIOOut.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false},
       {:exred_library, "~> 0.1.11"},
-      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
+      {:elixir_ale, "~> 1.0"}
     ]
   end
 
