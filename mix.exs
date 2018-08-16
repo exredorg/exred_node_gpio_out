@@ -11,7 +11,7 @@ defmodule Exred.Node.GPIOOut.Mixfile do
       start_permanent: Mix.env == :prod,
       deps: deps(),
       description: @description,
-    sss  package: package()
+      package: package()
     ]
   end
 
