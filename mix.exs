@@ -1,6 +1,8 @@
 defmodule Exred.Node.GPIOOut.Mixfile do
   use Mix.Project
 
+  @description "Sends data to a RaspberryPi GPIO pin"
+
   def project do
     [
       app: :exred_node_gpio_out,
@@ -11,7 +13,9 @@ defmodule Exred.Node.GPIOOut.Mixfile do
       lockfile: "../../mix.lock",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      description: @description,
+      project: project()
     ]
   end
 
@@ -29,7 +33,7 @@ defmodule Exred.Node.GPIOOut.Mixfile do
       {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
     ]
   end
-  
+
   defp package do
     %{
       licenses: ["MIT"],
