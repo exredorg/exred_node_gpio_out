@@ -5,5 +5,4 @@ defmodule Exred.Node.GPIOOutTest do
   test "has attributes" do
     assert is_map(Exred.Node.GPIOOut.attributes())
   end
-
 end
