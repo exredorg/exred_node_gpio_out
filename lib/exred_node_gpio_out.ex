@@ -46,11 +46,12 @@ defmodule Exred.Node.GPIOOut do
 
   @impl true
   def node_init(state) do
-    {Map.put(state, :init, :starting), 500}
+    GenServer.cast(self(), :do_init)
+    Map.put(state, :init, :starting)
   end
 
   @impl true
-  def handle_msg(:timeout, %{init: :starting} = state) do
+  def handle_cast(:do_init, %{init: :starting} = state) do
     # start GPIO process
     {:ok, pid} = GPIO.start_link(state.config.pin_number.value, :output)
 
@@ -59,9 +60,10 @@ defmodule Exred.Node.GPIOOut do
       |> Map.put(:pid, pid)
       |> Map.put(:init, :done)
 
-    {nil, new_state}
+    {:noreply, new_state}
   end
 
+  @impl true
   def handle_msg(msg, %{init: :starting} = state) do
     Logger.warn(
       "UNHANDLED MSG DURING INIT node: #{state.node_id} #{get_in(state.config, [:name, :value])} msg: #{

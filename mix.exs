@@ -28,7 +28,8 @@ defmodule Exred.Node.GPIOOut.Mixfile do
     [
       {:exred_nodeprototype, "~> 0.2"},
       {:ex_doc, "~> 0.19.0", only: :dev, runtime: false},
-      {:elixir_ale, "~> 1.0"}
+      {:elixir_ale, "~> 1.0"},
+      {:exred_nodetest, "~> 0.1.0", only: :test}
     ]
   end
 
